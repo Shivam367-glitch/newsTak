@@ -22,7 +22,7 @@ function FetchNews({cate}) {
             <h3 >Top HeadLines</h3>
             <div className='container d-flex flex-column justify-content-center align-items-center my-3' style={{minHeight:"100vh"}}>
                 {Data ? Data.map((items, index) =>
-                    <div>
+                    <div key={index}>
                         <div  className='container my-3 p-3' style={{ width: "600px", boxShadow: "2px 2px 10px #888888" }} >
                             {/*style={{width:"600px"}}  */}
                             <h5 className='my-2'>{items.title}</h5>
