@@ -5,7 +5,7 @@ function Hero() {
   return (
     <div className='container-fluid bg-dark text-white d-flex flex-column justify-content-center align-items-center' style={{height:'50vh'}}>
   <h1>News Tak</h1>
-  <h5>It is News website where you can read news with available categories.</h5>
+  <h5><strong>Stay Informed:</strong> Explore Our News Website with a Wide Range of Categories</h5>
     </div>
   )
 }
