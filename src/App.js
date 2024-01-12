@@ -4,7 +4,6 @@ import Home from "./Pages/Home";
 import FetchNews from "./Components/FetchNews"
 import Navbar from "./Components/Navbar";
 import Footer from './Components/Footer';
-// index.js or App.js
 
 function App() {
   return (
