@@ -39,8 +39,6 @@ function FetchNews({cate}) {
                         <div  className='card col my-3 p-3' style={{  boxShadow: "2px 2px 10px #888888" }} key={index}>
                            <img src={items.thumbnail} className='img-fluild text-center w-100' style={{maxWidth:"100%",height:"300px",margin:"0 auto 0 auto",objectFit:"contain"}}/>
                            <h6 className='my-2'>{items.title}</h6>
-                           {/* <div className='col-2'> */}
-                           {/* </div> */}
                             <div className='d-flex flex-row justify-content-between flex-wrap mt-3'>
                              <p>{new Date(items.date).toLocaleDateString()}</p>
                              <p>{items.publisher.name}</p>
