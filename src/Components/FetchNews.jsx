@@ -1,55 +1,64 @@
-
-import React, { useEffect, useState } from 'react'
-import axios from "axios";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
-function FetchNews({cate}) {
-    
-    const [Data, setData] = useState("");
-    console.log(cate);
-    const fetchData = async () => {
-        const options = {
-            method: 'GET',
-            url: 'https://news-api14.p.rapidapi.com/v2/trendings',
-            params: {
-              language: 'en',
-              country:'in',
-              topic: cate?cate:'General'
-            },
-            headers: {
-              'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-              'X-RapidAPI-Host': 'news-api14.p.rapidapi.com'
-            }
-          };
-        await axios.request(options).then((res) =>{
-             
-            setData(res?.data?.data)
-        });
-     
-    }
-    useEffect(() => {
-        document.title=cate?cate.toUpperCase():"News Tak";
-        fetchData()
-    }, [cate])
-    return (
-        <div className='container my-4'>
-            <h3 >Top HeadLines</h3>
-            <div className='container d-flex flex-column justify-content-center align-items-center my-3' style={{minHeight:'100vh'}}>
-                <div className='row d-flex flex-column'>
-                {Data ? Data.map((items, index) =>
-                        <div  className='card col my-3 p-3' style={{  boxShadow: "2px 2px 10px #888888" }} key={index}>
-                           <img src={items.thumbnail} className='img-fluild text-center w-100' style={{maxWidth:"100%",height:"300px",margin:"0 auto 0 auto",objectFit:"contain"}}/>
-                           <h6 className='my-2'>{items.title}</h6>
-                            <div className='d-flex flex-row justify-content-between flex-wrap mt-3'>
-                             <p>{new Date(items.date).toLocaleDateString()}</p>
-                             <p>{items.publisher.name}</p>
-                            <p className='my-1'>{items.content}<a href={items.url} target="_blank" className='mx-1'>Read More</a></p>
-                            </div>
-                        </div>
-           ) : <Spinner/>}
-                </div>
-               
+import useFetch from './useFetch';
+
+function FetchNews({ cate }) {
+  const [data, loading, error] = useFetch(cate);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <div className="col-12 text-center mt-2">{error}</div>;
+  }
+
+  return (
+    <div
+      className="container-fluid my-3 py-3 justify-content-center align-items-center"
+      style={{ minHeight: '100vh' }}
+    >
+      <h3 className="mx-2">Top Headlines</h3>
+      <div className="row gap-3 justify-content-center p-2">
+        {data &&
+          data.map((item, index) => (
+            <div
+              className="card col-12 col-md-5 col-lg-3 d-flex flex-column gap-2 py-2"
+              style={{ boxShadow: '2px 2px 10px #888888' }}
+              key={index}
+            >
+              <img
+                loading="lazy"
+                decoding="async"
+                src={item.thumbnail}
+                className="img-fluid text-center mx-auto"
+                style={{
+                  maxWidth: '100%',
+                  height: '300px',
+                  objectFit: 'contain',
+                }}
+                alt={item.title}
+              />
+              <h5 className="text-danger">{item.title}</h5>
+              <div className="d-flex flex-row justify-content-between flex-wrap align-items-center">
+                <span>
+                  {new Date(item.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </span>
+                <span>{item.publisher.name}</span>
+                <Link to={item.url} target="_blank" className="text-decoration-none">
+                  Read More
+                </Link>
+              </div>
             </div>
-        </div>
-    )
+          ))}
+      </div>
+    </div>
+  );
 }
-export default React.memo(FetchNews)
+
+export default React.memo(FetchNews);

@@ -1,13 +1,19 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.hero_container{
+  background: url("../public/news.jpg"); 
+  background-repeat: no-repeat ;
+  height: 50vh; 
+  background-size: cover;
+  background-position:center top;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  overflow-x: hidden !important;
+}
+
+
+
+@media screen and (max-width:992px) {
+   .hero_container{
+    background-position: center;
+   }
 }
