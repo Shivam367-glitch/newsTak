@@ -4,7 +4,7 @@ import React from 'react'
 import { FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 function Footer() {
   return (
-    <div className='container-fluid p-3 d-flex justify-content-center align-items-center flex-column bg-secondary ' style={{ height: "25vh" }}>
+    <div className='container-fluid p-3 d-flex justify-content-center align-items-center flex-column footer_container ' style={{ height: "25vh" }}>
       <h1>Find Me On</h1>
       <div className='list-group list-group-horizontal' style={{ listStyleType: "none" }}>
         <a className='list-group-item' href="https://www.linkedin.com/in/shivam-mishra-8aba7b179/" target="_blank"> <FaLinkedin /></a>

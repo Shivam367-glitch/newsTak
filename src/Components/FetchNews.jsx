@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
-import useFetch from './useFetch';
+import useFetch from '../Hooks/useFetch';
 
-function FetchNews({ cate }) {
-  const [data, loading, error] = useFetch(cate);
+function FetchNews() {
+  const [data, loading, error] = useFetch();
 
   if (loading) {
     return <Spinner />;
   }
 
   if (error) {
-    return <div className="col-12 text-center mt-2">{error}</div>;
+    return <div className="col-12 text-center mt-2 text-danger display-5 " style={{minHeight:"100vh"}}>{error}</div>;
   }
 
   return (

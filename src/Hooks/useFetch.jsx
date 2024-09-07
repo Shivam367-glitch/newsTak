@@ -1,9 +1,13 @@
 import {useState,useEffect} from "react"
 import axios from "axios"
-const useFetch = (cate) => { 
+import { useParams } from "react-router-dom";
+const useFetch = () => { 
     const [data, setData] = useState([]);
     const[loading,setLoading]=useState(false);
     const[error,setError]=useState("");
+    const category=useParams()["*"]; 
+    
+    
     const fetchData = async () => {
         const options = {
             method: 'GET',
@@ -11,7 +15,7 @@ const useFetch = (cate) => {
             params: {
               language: 'en',
               country:'in',
-              topic: cate?cate:'General'
+              topic: category?category:'General'
             },
             headers: {
               'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
@@ -22,7 +26,9 @@ const useFetch = (cate) => {
             setLoading(true);
             await axios.request(options).then((res) =>{
                 setData(res?.data?.data)
+                console.log(res?.data?.data);
             }); 
+            
           } catch (error) {
             setError(error.message);
           }
@@ -30,11 +36,14 @@ const useFetch = (cate) => {
             setLoading(false)
           }
        
-    }
+    } 
+
+
+    
     useEffect(() => {
-        document.title=cate?cate.toUpperCase():"News Tak";
+        document.title=category?category.toUpperCase():"News Tak";
         fetchData()
-    }, [cate])
+    }, [category])
   return [data,loading,error]
 }
 

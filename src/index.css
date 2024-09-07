@@ -11,7 +11,9 @@ body{
 }
 
 
-
+.footer_container{
+  background-color: #708090;
+}
 @media screen and (max-width:992px) {
    .hero_container{
     background-position: center;

@@ -13,31 +13,31 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to='/'>Home</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/'>Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to='/business'>Business</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/category/business'>Business</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link  text-white" aria-current="page" to='/sports'>Sports</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/category/sports'>Sports</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to='/technology'>Technology</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/category/technology'>Technology</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to='/entertainment'>Entertainment</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/category/entertainment'>Entertainment</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to='/science'>Science</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/category/science'>Science</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to='/life-style'>Lifestyle</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/category/life-style'>Lifestyle</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to='/politics'>Politics</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/category/politics'>Politics</Link>
               </li> 
               <li className="nav-item">
-                <Link className="nav-link active text-white" aria-current="page" to='/world'>World</Link>
+                <Link className="nav-link  text-white" aria-current="page" to='/category/world'>World</Link>
               </li>
             </ul>
           </div>
