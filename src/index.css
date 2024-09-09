@@ -10,7 +10,12 @@ body{
   overflow-x: hidden !important;
 }
 
-
+.news_img{
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 300px !important;
+  object-fit:  contain !important;
+}
 .footer_container{
   background-color: #e1c7a4;
 }
