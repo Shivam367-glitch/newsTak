@@ -1,17 +1,16 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 import useFetch from '../Hooks/useFetch';
 import { FaWhatsapp } from 'react-icons/fa';
 
-
 function FetchNews() {
-  const [data, loading, error] = useFetch();
+  const { data, loading, error } = useFetch();
+  console.log("Fetched News Data: ", data);
 
-
-    const WhatsAppShare=(url)=>{
-      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`)
-    } 
+  const WhatsAppShare = (url) => {
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`)
+  } 
 
   if (loading) {
     return <Spinner />;
@@ -28,39 +27,29 @@ function FetchNews() {
     >
       <h3 className="mx-2">Top Headlines</h3>
       <div className="row gap-3 justify-content-center px-2">
-        {data &&
+        {data.length > 0 ? (
           data.map((item, index) => (
-            <div
-              className="card col-12 col-md-5 col-lg-3 d-flex flex-column gap-2 pt-2 pb-1"
-              style={{ boxShadow: '2px 2px 10px #888888' }}
-              key={index}
-            >
-              <img
-                loading="lazy"
-                decoding="async"
-                src={item.thumbnail}
-                className="img-fluid text-center mx-auto news_img rounded" alt={item.title}
-              />
+            <div className="card col-12 col-md-5 col-lg-3 d-flex flex-column gap-2 pt-2 pb-1" key={index}>
+              <img src={item.thumbnail} alt={item.title} className="img-fluid text-center mx-auto news_img rounded" />
               <h5 className="text-danger">{item.title}</h5>
               <div className="d-flex flex-row justify-content-between flex-wrap align-items-center">
-                <span>
-                  {new Date(item.date).toLocaleDateString('en-US', {
+                <span> {new Date(item.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
-                  })}
-                </span>
+                  })}</span>
                 <span>{item.publisher.name}</span>
-                <Link to={item.url} target="_blank" className="text-decoration-none">
-                  Read More
-                </Link>
-                <FaWhatsapp color='#128C7E' className='fs-3' onClick={()=>{WhatsAppShare(item.url)}}/>
+                <Link to={item.url} target="_blank" className='text-decoration-none'>Read More</Link>
+                <FaWhatsapp color='#128C7E' className='fs-3' onClick={() => WhatsAppShare(item.url)} style={{ cursor: "pointer" }} />
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <div className="col-12 text-center mt-2 text-danger display-5">No News Articles Found</div>
+        )}
       </div>
     </div>
   );
 }
 
-export default React.memo(FetchNews);
+export default FetchNews;

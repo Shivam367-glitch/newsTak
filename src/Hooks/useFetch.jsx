@@ -1,50 +1,46 @@
-import {useState,useEffect} from "react"
-import axios from "axios"
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
-const useFetch = () => { 
-    const [data, setData] = useState([]);
-    const[loading,setLoading]=useState(false);
-    const[error,setError]=useState("");
-    const category=useParams()["*"]; 
-    
-    
-    const fetchData = async () => {
-        const options = {
-            method: 'GET',
-            url: 'https://news-api14.p.rapidapi.com/v2/trendings',
-            params: {
-              language: 'en',
-              country:'in',
-              topic: category?category:'General'
-            },
-            headers: {
-              'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-              'X-RapidAPI-Host': 'news-api14.p.rapidapi.com'
-            }
-          }; 
-          try { 
-            setLoading(true);
-            await axios.request(options).then((res) =>{
-                setData(res?.data?.data)
-                console.log(res?.data?.data);
-            }); 
-            
-          } catch (error) {
-            setError(error.message);
-          }
-          finally{
-            setLoading(false)
-          }
-       
-    } 
+import { LanguageContext } from "../contexts/LanguageContext";
 
+const useFetch = () => {
+  const { selectedLang } = useContext(LanguageContext);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const category = useParams()["*"]; 
 
-    
-    useEffect(() => {
-        document.title=category?category.toUpperCase():"News Tak";
-        fetchData()
-    }, [category])
-  return [data,loading,error]
-}
+  const fetchData = async () => {
+    const options = {
+      method: 'GET',
+      url: 'https://news-api14.p.rapidapi.com/v2/trendings',
+      params: {
+        language: selectedLang.value,
+        country: (selectedLang.value=='en'||selectedLang.value=='bn'||selectedLang.value=='hi')?'in':'',
+        topic: category ? category : 'General'
+      },
+      headers: {
+        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
+        'X-RapidAPI-Host': 'news-api14.p.rapidapi.com'
+      }
+    };
 
-export default useFetch
+    try {
+      setLoading(true);
+      const response = await axios.request(options);
+      setData(response?.data?.data || []); 
+    } catch (err) {
+      setError(err.message || "An error occurred while fetching data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [category, selectedLang]);
+
+  return { data, loading, error };
+};
+
+export default useFetch;

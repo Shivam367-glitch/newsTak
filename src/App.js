@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import FetchNews from "./Components/FetchNews"
@@ -7,7 +7,9 @@ import Footer from './Components/Footer';
 import Hero from './Components/Hero';
 import ScrollToTop from './Components/ScrollToTop';
 
+
 function App() {
+ 
   return (
     <div>
       <BrowserRouter>
