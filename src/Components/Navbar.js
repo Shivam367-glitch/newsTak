@@ -40,10 +40,10 @@ const Header = () => {
   };
 
   return (
-    <Container fluid={true}  className="nav_container">
+    <Container fluid={true}  className="nav_container fixed-top">
       <Row >
          
-          <Navbar as={Col} expanded={expanded} expand="lg" className="border-bottom py-3 fixed-top d-flex align-items-center justify-content-between">
+          <Navbar as={Col} expanded={expanded} expand="lg" className="border-bottom py-3  d-flex align-items-center justify-content-between">
             <Container fluid className="d-lg-flex justify-content-lg-between align-items-lg-center"> 
             <NavLink
             to="/"
