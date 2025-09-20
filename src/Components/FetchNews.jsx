@@ -29,9 +29,11 @@ function FetchNews() {
       <div className="row gap-3 justify-content-center px-2">
         {data.length > 0 ? (
           data.map((item, index) => (
+
             <div className="card col-12 col-md-5 col-lg-3 d-flex flex-column gap-2 pt-2 pb-1 shadow rounded-2 news_card" key={index}>
               <img src={item.thumbnail} alt={item.title} className="img-fluid text-center mx-auto news_img rounded-2" loading="lazy" />
               <h5 className="text-danger mt-2">{item.title}</h5>
+
               <div className="d-flex flex-row justify-content-between flex-wrap align-items-center">
                 <span> {new Date(item.date).toLocaleDateString('en-US', {
                     year: 'numeric',
