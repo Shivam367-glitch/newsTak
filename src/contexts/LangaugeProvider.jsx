@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import LanguageContext from "./LanguageContext"; // ✅ correct import
-
+import LanguageContext from "./LanguageContext"; 
 export const LanguageProvider = ({ children }) => {
   const initialLang = localStorage.getItem("selectedLang")
     ? JSON.parse(localStorage.getItem("selectedLang"))

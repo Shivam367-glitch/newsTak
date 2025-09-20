@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import FetchNews from "./Components/FetchNews"
-import Header from "./Components/Navbar";
+import Header from "./Components/Navbar.jsx";
 import Footer from './Components/Footer';
 import Hero from './Components/Hero';
 import ScrollToTop from './Components/ScrollToTop';

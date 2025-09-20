@@ -1,12 +1,11 @@
 
 import { Link } from 'react-router-dom';
-import Spinner from './Spinner';
+import Spinner from './Spinner.jsx';
 import useFetch from '../Hooks/useFetch';
 import { FaWhatsapp } from 'react-icons/fa';
 
 function FetchNews() {
   const { data, loading, error } = useFetch();
-  console.log("Fetched News Data: ", data);
 
   const WhatsAppShare = (url) => {
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`)

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import LangaugeContext from "../contexts/LanguageContext";
+import LangaugeContext from "../contexts/LanguageContext.jsx";
 
 // collect all keys from .env
 const apiKeys = [
