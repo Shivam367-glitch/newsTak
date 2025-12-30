@@ -1,11 +1,11 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import FetchNews from "./Components/FetchNews"
-import Header from "./Components/Navbar.jsx";
-import Footer from './Components/Footer';
-import Hero from './Components/Hero';
-import ScrollToTop from './Components/ScrollToTop';
+import FetchNews from "./Components/layout/FetchNews"
+import Header from "./Components/layout/Navbar";
+import Footer from './Components/layout/Footer';
+import Hero from './Components/common/Hero';
+import ScrollToTop from './Components/common/ScrollToTop';
 
 
 function App() {

@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
-import Spinner from './Spinner.jsx';
-import useFetch from '../Hooks/useFetch';
+import Spinner from '../common/Spinner';
+import useFetch from '../../Hooks/useFetch';
 import { FaWhatsapp } from 'react-icons/fa';
 
 function FetchNews() {

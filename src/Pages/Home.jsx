@@ -1,5 +1,5 @@
 
-import FetchNews from '../Components/FetchNews'
+import FetchNews from '../Components/layout/FetchNews'
 function Home() {
   
   return (
