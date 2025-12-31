@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 
 const Header = () => { 
 
-  console.log("Header re-renders....");
   
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
@@ -31,9 +30,9 @@ const Header = () => {
  
  
     const toggleMenu = () => {
-   setExpanded(prev => !prev);
+     setExpanded(prev => !prev);
 
-  }
+       }
   const handleLogoClick = () => {
     navigate('/');
    if(expanded) toggleMenu();
@@ -95,8 +94,8 @@ const Header = () => {
        
          
           <Container fluid={true} className="m-0 p-0">
-            <Row className="justify-content-between"> 
-              <Col  className="d-flex align-items-center gap-2">  
+            <Row className="flex-column-reverse flex-md-row justify-content-between  align-items-md-center"> 
+              <Col  className="" xs={6}  md={3} lg={2}>  
               <Select
               options={languageOptions}
               value={selectedLang}
@@ -105,11 +104,11 @@ const Header = () => {
               classNamePrefix="select" 
             /> 
 
-              <span className="text-white "><img src={icon} alt="Weather Icon" /> {temp+" ºC"}</span>
   
               </Col>   
 
-              <Col  xs={4} md={2} lg={2} className="text-center my-auto"> 
+              <Col  xs={12} md={5} lg={4} className="text-center my-auto d-flex justify-content-between justify-content-lg-end align-items-center gap-3"> 
+                <span className="text-white "><img src={icon} alt="Weather Icon" /> {temp+" ºC"}</span>
                 <Timer />
               </Col>
 
