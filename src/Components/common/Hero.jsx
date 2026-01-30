@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCoordinate } from "../../features/loc/locThunks";
 import { fetchWeather } from "../../features/weather/weatherThunks";
 import { loc } from "../../features/loc/locSelectors";
+
+
 function Hero() {
   const dispatch = useDispatch();
   const location = useSelector(loc);
@@ -17,6 +19,8 @@ function Hero() {
       dispatch(fetchWeather());
     }
   }, [location, dispatch]);
+
+ 
 
   return (
    <div className='container-fluid  d-flex flex-column justify-content-center align-items-center hero_container ' >

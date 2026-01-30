@@ -2,7 +2,8 @@
 body{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; 
+   overflow-x: hidden !important;
 }
 
 .fixed-top {
@@ -13,7 +14,6 @@ body{
   background-color: #e1c7a4;
 }
 
- 
 
 .navbar-nav a{ 
   font-size: 18px;
@@ -40,7 +40,7 @@ body{
 .btn-close{
   background-color: white !important;
   border: none !important;
-  opacity: 1 ;
+  opacity: 1;
   position: absolute;
   top: 10px;
   right: 20px;
@@ -58,9 +58,7 @@ body{
   background-position:center top;
 }
 
-body{
-  overflow-x: hidden !important;
-} 
+ 
 
 
 .news_card{
@@ -85,9 +83,15 @@ body{
 } 
 
 
+/* Pagination Section */
 
 
-
+.pagination_item{
+  cursor: pointer; 
+  border-radius: 100px !important; 
+  padding: 10px;
+  background-color: red;
+}
 
 /* media Queries */
 @media screen and (max-width:991px) { 
