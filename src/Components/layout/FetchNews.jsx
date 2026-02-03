@@ -29,11 +29,6 @@ function FetchNews() {
 }, [currentCategory,dispatch,currentPage]);
 
 
- 
-
-  if (status === "loading" ) {
-    return <Spinner />;
-  }
 
   if (error) {
     return (
@@ -49,7 +44,8 @@ function FetchNews() {
   return (
     <div className="container-fluid my-3 py-3">
       <h3 className="mx-2">Top Headlines</h3>
-
+        {
+          status==="loading"? <Spinner /> :    
       <div className="row gap-3 justify-content-center px-2">
         {categoryData?.currentArticleToView?.length > 0 ? (
           <>
@@ -71,25 +67,6 @@ function FetchNews() {
               </div>
             </div>
             ))}
-
-            {/* {(page < totalPages) && (
-              <div className="text-center w-100">
-                <button
-                  className="btn btn-primary my-3"
-                  onClick={() =>
-                    dispatch(
-                      fetchNews({
-                        category,
-                        language: selectedLang.value,
-                        page: page + 1,
-                      })
-                    )
-                  }
-                >
-                  Load More
-                </button>
-              </div>
-            )} */}
           </>
         ) : (
           <div className="col-12 text-center mt-2 text-danger display-5">
@@ -97,11 +74,9 @@ function FetchNews() {
           </div>
         )}
       </div> 
- 
-
-      <div className="row">
-
-      <PaginationBasic currentPage={currentPage} totalPages={totalPages}  selectedLang={selectedLang} />
+      }
+      <div className="row ">
+        <PaginationBasic currentPage={currentPage} totalPages={totalPages}  selectedLang={selectedLang} />
       </div>
     </div>
   );

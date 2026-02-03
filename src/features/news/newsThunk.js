@@ -7,20 +7,20 @@ export const fetchNews = createAsyncThunk(
   async (
     { language },
     { getState, rejectWithValue }
-  ) => {     
+  ) => {      
     const state = getState().news;
     const categoryData = state.newsByCategory[state.currentCategory];
-    const nextPage = (categoryData?.currentPage || 1);
+    const requestedPage = (categoryData?.currentPage || 1);
 
-    if (  nextPage > categoryData.totalPages) {
-      return rejectWithValue("No more pages");
-    }
+      if (categoryData?.currentPage !=0 && requestedPage > categoryData.totalPages) {
+        return rejectWithValue("No more pages");
+      }
 
-      if ( categoryData && categoryData.pagesFetched[nextPage]) {  
+      if (categoryData && categoryData.pagesFetched[requestedPage]) {   
           return {
             category: state.currentCategory || "General",
-            page: nextPage,
-            articles:categoryData?.currentArticleToView || [], 
+            page: requestedPage,
+            articles:categoryData?.pagesFetched[requestedPage] || [], 
             totalPages: categoryData.totalPages
           };
         }
@@ -41,7 +41,7 @@ export const fetchNews = createAsyncThunk(
                     ? "in"
                     : "",
                 topic: state.currentCategory || "General",
-                page: nextPage,
+                page: requestedPage,
               },
               headers: {
                 "X-RapidAPI-Key": getApiKey(),
@@ -53,7 +53,7 @@ export const fetchNews = createAsyncThunk(
           const totalPages = response.data.totalPages || 0;
           return {
             category: state.currentCategory || "General",
-            page: nextPage,
+            page: requestedPage,
             articles: response.data.data || [],
             totalPages
           };

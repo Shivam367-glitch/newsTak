@@ -83,15 +83,24 @@ body{
 } 
 
 
-/* Pagination Section */
+  /* Pagination Section */
 
 
-.pagination_item{
-  cursor: pointer; 
-  border-radius: 100px !important; 
-  padding: 10px;
-  background-color: red;
-}
+  .page-link{
+    cursor: pointer; 
+    padding: 10px;
+    background-color: red; 
+    border: none; 
+    color: black;
+  }  
+
+  .page-link:hover, .page-link .active{
+    background-color: #e1c7a4; 
+    color: white ;
+  }
+
+
+  
 
 /* media Queries */
 @media screen and (max-width:991px) { 

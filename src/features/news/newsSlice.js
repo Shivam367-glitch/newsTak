@@ -35,15 +35,16 @@ const newsSlice = createSlice({
         state.error = null;  
       if (!state.newsByCategory[state.currentCategory]) { 
           state.newsByCategory[state.currentCategory] = {
-          currentPage: 1, 
+          currentPage: 0, 
           currentArticleToView: [], 
-          totalPages: Infinity,
+          totalPages: 0,
           pagesFetched: {},
           };
       }
       })
       .addCase(fetchNews.fulfilled, (state, action) => {
-        const { category, page, articles, totalPages } = action.payload;    
+        const { category, page, articles, totalPages} = action.payload;    
+       
         const categoryState = state.newsByCategory[category];
         categoryState.currentPage = page;
         categoryState.totalPages = totalPages; 
